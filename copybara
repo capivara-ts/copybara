@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Detecta sistema
+OS="$(uname -s)"
+
+if [[ "$OS" == "Darwin" ]]; then
+    # macOS
+    pbpaste
+elif [[ "$OS" == "Linux" ]]; then
+    # Linux
+    if command -v wl-paste >/dev/null 2>&1; then
+        wl-paste --no-newline
+    elif command -v xclip >/dev/null 2>&1; then
+        xclip -selection clipboard -o
+    elif command -v xsel >/dev/null 2>&1; then
+        xsel --clipboard --output
+    else
+        echo "Erro: não encontrei wl-paste, xclip ou xsel." >&2
+        exit 1
+    fi
+else
+    echo "Erro: sistema não suportado. Use Windows PowerShell." >&2
+    exit 1
+fi
+
