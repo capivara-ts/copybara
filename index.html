@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Capivara Tech APT Repository</title>
+  <title>🐾 Capivara Tech - Copybara Installation</title>
   <style>
     body {
       font-family: sans-serif;
@@ -13,6 +13,23 @@
     h1 {
       color: #2c3e50;
     }
+    h2 {
+      color: #2c3e50;
+      margin-top: 30px;
+    }
+    pre {
+      background: #eee;
+      padding: 10px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+    a {
+      color: #0073e6;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
     ul {
       list-style: none;
       padding: 0;
@@ -20,26 +37,42 @@
     li {
       margin: 8px 0;
     }
-    a {
-      text-decoration: none;
-      color: #0073e6;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    code {
-      background: #eee;
-      padding: 2px 6px;
-      border-radius: 4px;
+    footer {
+      margin-top: 50px;
+      font-size: 0.8em;
+      color: #555;
     }
   </style>
 </head>
 <body>
-  <h1>🐾 Capivara Tech - APT Repository</h1>
-  <p>Add this repository to your system:</p>
-  <pre><code>deb [signed-by=/etc/apt/trusted.gpg.d/capivara.gpg] https://capivara-ts.github.io/copybara/ ./</code></pre>
+  <h1>🐾 Capivara Tech - Copybara Installation</h1>
+  <p>Follow the instructions below to install Copybara on your system:</p>
 
-  <h2>📦 Files</h2>
+  <h2>💻 Linux (Ubuntu / Debian)</h2>
+  <p>Run these commands in a terminal:</p>
+  <pre><code>curl -fsSL https://capivara-ts.github.io/copybara/pubkey.gpg | gpg --dearmor | sudo tee /usr/share/keyrings/capivara-archive-keyring.gpg >/dev/null
+echo "deb [signed-by=/usr/share/keyrings/capivara-archive-keyring.gpg] https://capivara-ts.github.io/copybara/ ./" | sudo tee /etc/apt/sources.list.d/capivara.list
+sudo apt update
+sudo apt install copybara</code></pre>
+
+  <h2>🪟 Windows</h2>
+  <ul>
+    <li>Download the ZIP: <a href="https://capivara-ts.github.io/copybara/copybara-1.0.deb">Copybara ZIP/Script</a> (rename to copybara.zip if needed)</li>
+    <li>Extract it anywhere, e.g., <code>C:\Users\YourUser\bin\copybara</code></li>
+    <li>Add that folder to your PATH if needed</li>
+    <li>Open PowerShell or CMD and run: <code>copybara</code></li>
+  </ul>
+
+  <h2>🍏 macOS</h2>
+  <ul>
+    <li>Download the script/ZIP from <a href="https://capivara-ts.github.io/copybara/copybara-1.0.deb">Copybara</a></li>
+    <li>Move the script to <code>/usr/local/bin</code></li>
+    <li>Make it executable: <code>chmod +x /usr/local/bin/copybara</code></li>
+    <li>Run in Terminal: <code>copybara</code></li>
+    <li>Alternatively, create a Homebrew formula for automated installation</li>
+  </ul>
+
+  <h2>📦 Files in this repository</h2>
   <ul>
     <li><a href="copybara-1.0.deb">copybara-1.0.deb</a></li>
     <li><a href="Packages.gz">Packages.gz</a></li>
@@ -50,7 +83,7 @@
   </ul>
 
   <footer>
-    <p><small>© 2025 Capivara Tech</small></p>
+    <p>© 2025 Capivara Tech</p>
   </footer>
 </body>
 </html>
