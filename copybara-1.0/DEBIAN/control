@@ -1,0 +1,8 @@
+Package: copybara
+Version: 1.0
+Section: utils
+Priority: optional
+Architecture: all
+Maintainer: CAPIVARA TECH SOLUTIONS capivaratechsolutions@gmail.com
+Depends: xclip | xsel | wl-clipboard
+Description: copybara - print system clipboard to stdout

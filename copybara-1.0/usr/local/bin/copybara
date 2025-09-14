@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# imprime o clipboard no stdout (para redirecionamento com > arquivo)
+if command -v wl-paste >/dev/null 2>&1; then
+  # Wayland
+  wl-paste --no-newline
+elif command -v xclip >/dev/null 2>&1; then
+  # X11 (xclip)
+  xclip -selection clipboard -o
+elif command -v xsel >/dev/null 2>&1; then
+  # X11 (xsel)
+  xsel --clipboard --output
+else
+  echo "Erro: não encontrei wl-paste, xclip ou xsel. Instale um deles." >&2
+  exit 1
+fi
