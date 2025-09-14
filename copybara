@@ -6,7 +6,12 @@ OS="$(uname -s)"
 
 if [[ "$OS" == "Darwin" ]]; then
     # macOS
-    pbpaste
+    if command -v pbpaste >/dev/null 2>&1; then
+        pbpaste
+    else
+        echo "Erro: pbpaste não encontrado. macOS necessário." >&2
+        exit 1
+    fi
 elif [[ "$OS" == "Linux" ]]; then
     # Linux
     if command -v wl-paste >/dev/null 2>&1; then
@@ -16,11 +21,10 @@ elif [[ "$OS" == "Linux" ]]; then
     elif command -v xsel >/dev/null 2>&1; then
         xsel --clipboard --output
     else
-        echo "Erro: não encontrei wl-paste, xclip ou xsel." >&2
+        echo "Erro: não encontrei wl-paste, xclip ou xsel. Instale um deles." >&2
         exit 1
     fi
 else
-    echo "Erro: sistema não suportado. Use Windows PowerShell." >&2
+    echo "Erro: sistema não suportado." >&2
     exit 1
 fi
-
